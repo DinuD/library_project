@@ -28,7 +28,4 @@ void citire() {
         fin >> c[i].nr_eliberate_curent >> c[i].nr_previous_chiriasi;
         fin >> c[i].id_carte;
     }
-    for(int i = 0; i < n; i++) {
-        cout << c[i].titlu << endl;
-    }
 }
