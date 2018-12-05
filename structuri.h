@@ -22,6 +22,7 @@ struct persoana {
     char prenume[31];
     char oras[21];
     float reputatie;
+    int nr_carti;
     int id_carti_imprumutate[50];
 };
 

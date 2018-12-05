@@ -7,4 +7,6 @@
 
 void citire();
 
+void afisari();
+
 #endif //LIBRARY_PROJECT_OPERATII_H
