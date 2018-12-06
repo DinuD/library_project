@@ -1,4 +1,6 @@
 #include <iostream>
+#include <conio.h>
+#include <afxres.h>
 #include "operatii.h"
 
 using namespace std;
@@ -20,8 +22,17 @@ int main() {
                 afisari();
             } break;
 
+            case 2: {
+                sortari();
+            } break;
+
             case 0: {
                 return 0;
+            }
+
+            default: {
+                cout << "Optiune inexistenta. Incearca din nou\n";
+                Sleep(1000);
             }
         }
     } while(t != 0);

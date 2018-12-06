@@ -9,4 +9,6 @@ void citire();
 
 void afisari();
 
+void sortari();
+
 #endif //LIBRARY_PROJECT_OPERATII_H

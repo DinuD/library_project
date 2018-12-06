@@ -7,39 +7,42 @@
 #include <fstream>
 #include <iostream>
 #include <conio.h>
+#include <afxres.h>
 
 using namespace std;
 
-ifstream fin("../date.in");
+ifstream carti("../carti.in");
+ifstream persoane("../persoane.in");
 carte c[100];
 persoana p[32];
 sediu s[3];
 int n, nrp;
 
 void citire() {
-    fin >> n;
-    for(int i = 0; i < n; i++) {
-        fin.get();
-        fin.get(c[i].titlu, 51);
-        fin.get();
-        fin.get(c[i].autor, 51);
-        fin.get();
-        fin.get(c[i].gen, 21);
-        fin >> c[i].nr_pag >> c[i].rating >> c[i].stoc;
-        fin >> c[i].nr_eliberate_curent >> c[i].nr_previous_chiriasi;
-        fin >> c[i].id_carte;
+    while(!carti.eof()) {
+        carti.get(c[n].titlu, 51);
+        carti.get();
+        carti.get(c[n].autor, 51);
+        carti.get();
+        carti.get(c[n].gen, 21);
+        carti >> c[n].nr_pag >> c[n].rating >> c[n].stoc;
+        carti >> c[n].nr_eliberate_curent >> c[n].nr_previous_chiriasi;
+        carti >> c[n].id_carte;
+        carti.get();
+        n++;
     }
-    fin >> nrp;
-    for(int i = 0; i < nrp; i++) {
-        fin.get();
-        fin.get(p[i].nume, 31);
-        fin.get();
-        fin.get(p[i].prenume, 31);
-        fin.get();
-        fin.get(p[i].oras, 21);
-        fin >> p[i].reputatie >> p[i].nr_carti;
-        for(int j = 0; j < p[i].nr_carti; j++)
-            fin >> p[i].id_carti_imprumutate[j];
+    n--;
+    while(!persoane.eof()) {
+        persoane.get(p[nrp].nume, 31);
+        persoane.get();
+        persoane.get(p[nrp].prenume, 31);
+        persoane.get();
+        persoane.get(p[nrp].oras, 21);
+        persoane >> p[nrp].reputatie >> p[nrp].nr_carti;
+        for(int j = 0; j < p[nrp].nr_carti; j++)
+            persoane >> p[nrp].id_carti_imprumutate[j];
+        persoane.get();
+        nrp++;
     }
 }
 
@@ -88,6 +91,102 @@ void afisari() {
             case 2: {
                 afisare_clienti();
             } getch(); break;
+
+            case 0: {
+                return;
+            }
+
+            default: {
+                cout << "Optiune inexistenta. Incearca din nou\n";
+                Sleep(1000);
+            }
+        }
+    } while(t != 0);
+}
+
+void sortare_az_titlu() {
+    int ok=1;
+    carte aux;
+    do {
+        ok = 1;
+        for(int i = 0; i < n-1; i++) {
+            if(strcmp(c[i].titlu, c[i+1].titlu)>0) {
+                aux = c[i];
+                c[i] = c[i+1];
+                c[i+1] = aux;
+                ok = 0;
+            }
+        }
+    } while(!ok);
+    afisare_carti();
+}
+
+void sortare_az_autor() {
+    int ok=1;
+    carte aux;
+    do {
+        ok = 1;
+        for(int i = 0; i < n-1; i++) {
+            if(strcmp(c[i].autor, c[i+1].autor)>0) {
+                aux = c[i];
+                c[i] = c[i+1];
+                c[i+1] = aux;
+                ok = 0;
+            }
+        }
+    } while(!ok);
+    afisare_carti();
+}
+
+void sortare_desc_stoc() {
+    int ok=1;
+    carte aux;
+    do {
+        ok = 1;
+        for(int i = 0; i < n-1; i++) {
+            if(c[i].stoc < c[i+1].stoc) {
+                aux = c[i];
+                c[i] = c[i+1];
+                c[i+1] = aux;
+                ok = 0;
+            }
+        }
+    } while(!ok);
+    afisare_carti();
+}
+
+void sortari() {
+    int t;
+    do {
+        system("cls");
+        cout << "Introdu numarul optiunii dorite si apasa Enter!" << endl;
+        cout << "1. Sortare carti alfabetic dupa titlu" << endl;
+        cout << "2. Sortare carti descrescator dupa stoc" << endl;
+        cout << "3. Sortare carti alfabetic dupa autor" << endl;
+        cout << "0. Inapoi" << endl;
+        cout << "Optiunea dorita: ";
+        cin >> t;
+        switch(t) {
+            case 1: {
+                sortare_az_titlu();
+            } getch(); break;
+
+            case 2: {
+                sortare_desc_stoc();
+            } getch(); break;
+
+            case 3: {
+                sortare_az_autor();
+            } getch(); break;
+
+            case 0: {
+                return;
+            }
+
+            default: {
+                cout << "Optiune inexistenta. Incearca din nou\n";
+                Sleep(1000);
+            }
         }
     } while(t != 0);
 }
