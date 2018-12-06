@@ -161,8 +161,8 @@ void sortari() {
         system("cls");
         cout << "Introdu numarul optiunii dorite si apasa Enter!" << endl;
         cout << "1. Sortare carti alfabetic dupa titlu" << endl;
-        cout << "2. Sortare carti descrescator dupa stoc" << endl;
-        cout << "3. Sortare carti alfabetic dupa autor" << endl;
+        cout << "2. Sortare carti alfabetic dupa autor" << endl;
+        cout << "3. Sortare carti descrescator dupa stoc" << endl;
         cout << "0. Inapoi" << endl;
         cout << "Optiunea dorita: ";
         cin >> t;
@@ -172,11 +172,11 @@ void sortari() {
             } getch(); break;
 
             case 2: {
-                sortare_desc_stoc();
+                sortare_az_autor();
             } getch(); break;
 
             case 3: {
-                sortare_az_autor();
+                sortare_desc_stoc();
             } getch(); break;
 
             case 0: {
