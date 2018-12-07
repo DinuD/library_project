@@ -155,6 +155,45 @@ void sortare_desc_stoc() {
     afisare_carti();
 }
 
+void sortare_az_clienti() {
+    int ok=1;
+    persoana aux;
+    do {
+        ok = 1;
+        for(int i = 0; i < nrp-1; i++) {
+            if(strcmp(p[i].nume, p[i+1].nume)>0) {
+                aux = p[i];
+                p[i] = p[i+1];
+                p[i+1] = aux;
+                ok = 0;
+            } else if(strcmp(p[i].prenume, p[i+1].prenume)>0) {
+                aux = p[i];
+                p[i] = p[i+1];
+                p[i+1] = aux;
+                ok = 0;
+            }
+        }
+    } while(!ok);
+    afisare_clienti();
+}
+
+void sortare_desc_clienti_carti() {
+    int ok=1;
+    persoana aux;
+    do {
+        ok = 1;
+        for(int i = 0; i < nrp-1; i++) {
+            if(p[i].nr_carti < p[i+1].nr_carti) {
+                aux = p[i];
+                p[i] = p[i+1];
+                p[i+1] = aux;
+                ok = 0;
+            }
+        }
+    } while(!ok);
+    afisare_clienti();
+}
+
 void sortari() {
     int t;
     do {
@@ -163,6 +202,8 @@ void sortari() {
         cout << "1. Sortare carti alfabetic dupa titlu" << endl;
         cout << "2. Sortare carti alfabetic dupa autor" << endl;
         cout << "3. Sortare carti descrescator dupa stoc" << endl;
+        cout << "4. Sortare lista clienti alfabetic" << endl;
+        cout << "5. Sortare descrescatoare in functie de numarul de carti imprumutate in prezent" << endl;
         cout << "0. Inapoi" << endl;
         cout << "Optiunea dorita: ";
         cin >> t;
@@ -179,13 +220,20 @@ void sortari() {
                 sortare_desc_stoc();
             } getch(); break;
 
+            case 4: {
+                sortare_az_clienti();
+            } getch(); break;
+
+            case 5: {
+                sortare_desc_clienti_carti();
+            } getch(); break;
+
             case 0: {
                 return;
             }
 
             default: {
-                cout << "Optiune inexistenta. Incearca din nou\n";
-                Sleep(1000);
+                return;
             }
         }
     } while(t != 0);
