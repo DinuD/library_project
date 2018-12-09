@@ -26,6 +26,10 @@ int main() {
                 sortari();
             } break;
 
+            case 3: {
+                cautari();
+            } break;
+
             case 0: {
                 return 0;
             }

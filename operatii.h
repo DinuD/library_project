@@ -11,4 +11,6 @@ void afisari();
 
 void sortari();
 
+void cautari();
+
 #endif //LIBRARY_PROJECT_OPERATII_H

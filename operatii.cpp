@@ -202,8 +202,56 @@ void sortari() {
         cout << "1. Sortare carti alfabetic dupa titlu" << endl;
         cout << "2. Sortare carti alfabetic dupa autor" << endl;
         cout << "3. Sortare carti descrescator dupa stoc" << endl;
-        cout << "4. Sortare lista clienti alfabetic" << endl;
-        cout << "5. Sortare descrescatoare in functie de numarul de carti imprumutate in prezent" << endl;
+        cout << "4. Sortare carti descrescator dupa rating" << endl;
+        cout << "5. Sortare lista clienti alfabetic" << endl;
+        cout << "6. Sortare clienti descrescator in functie de numarul de carti imprumutate in prezent" << endl;
+        cout << "0. Inapoi" << endl;
+        cout << "Optiunea dorita: ";
+        cin >> t;
+        switch(t) {
+            case 1: {
+                sortare_az_titlu();
+            } getch(); break;
+
+            case 2: {
+                sortare_az_autor();
+            } getch(); break;
+
+            case 3: {
+                sortare_desc_stoc();
+            } getch(); break;
+
+            case 4: {
+                sortare_az_clienti();
+            } getch(); break;
+
+            case 5: {
+                sortare_desc_clienti_carti();
+            } getch(); break;
+
+            case 0: {
+                return;
+            }
+
+            default: {
+                return;
+            }
+        }
+    } while(t != 0);
+}
+
+void cautare_carte() {
+
+}
+
+void cautari() {
+    int t;
+    do {
+        system("cls");
+        cout << "Introdu numarul optiunii dorite si apasa Enter!" << endl;
+        cout << "1. Cautare carte" << endl;
+        cout << "2. Cautare carti in functie de autor" << endl;
+        cout << "3. Cautare carti in functie de gen" << endl;
         cout << "0. Inapoi" << endl;
         cout << "Optiunea dorita: ";
         cin >> t;
