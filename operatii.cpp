@@ -204,7 +204,7 @@ void sortari() {
         cout << "3. Sortare carti descrescator dupa stoc" << endl;
         cout << "4. Sortare carti descrescator dupa rating" << endl;
         cout << "5. Sortare lista clienti alfabetic" << endl;
-        cout << "6. Sortare clienti descrescator in functie de numarul de carti imprumutate in prezent" << endl;
+        cout << "6. Sortare clienti descrescator in functie de numarul de carti imprumutate" << endl;
         cout << "0. Inapoi" << endl;
         cout << "Optiunea dorita: ";
         cin >> t;
