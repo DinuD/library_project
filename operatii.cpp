@@ -240,8 +240,25 @@ void sortari() {
     } while(t != 0);
 }
 
-void cautare_carte() {
+void afisare_carte(int poz) {
+	
+}
 
+void cautare_carte() {
+	system("cls");
+	char s[51];
+	cout << "Ce carte cauti?" << endl;
+	cin >> s;
+	int st=0, dr=n, m;
+	do {
+		m = (st+dr)/2;
+		if(strcmp(c[m], s)==0)
+			afisare_carte(m);
+		else if(strcmp(s, c[m])<0)
+			dr = m-1;
+		else
+			st = m+1;
+	} while(st<=dr);
 }
 
 void cautari() {
@@ -257,7 +274,7 @@ void cautari() {
         cin >> t;
         switch(t) {
             case 1: {
-                sortare_az_titlu();
+                cautare_carte();
             } getch(); break;
 
             case 2: {
