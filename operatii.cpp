@@ -256,6 +256,7 @@ void afisare_carte(int i) {
 void cautare_carte() {
 	system("cls");
 	char s[51];
+	sortare_az_titlu();
 	cout << "Ce carte cauti?" << endl;
 	cin >> s;
 	int st=0, dr=n, m;
@@ -269,6 +270,7 @@ void cautare_carte() {
 		else
 			st = m+1;
 	} while(st<=dr);
+	cout << "Nu am gasit cartea. Incearca din nou" << endl;
 }
 
 void cautari() {
