@@ -27,7 +27,6 @@ void citire() {
         carti.get(c[n].gen, 21);
         carti >> c[n].nr_pag >> c[n].rating >> c[n].stoc;
         carti >> c[n].nr_eliberate_curent >> c[n].nr_previous_chiriasi;
-        carti >> c[n].id_carte;
         carti.get();
         n++;
     }
