@@ -265,7 +265,7 @@ void cautare_carte() {
 		if(strcmp(c[m].titlu, s)==0) {
 			afisare_carte(m);
 			return;
-		} else if(strcmp(s, c[m])<0)
+		} else if(strcmp(s, c[m].titlu)<0)
 			dr = m-1;
 		else
 			st = m+1;
