@@ -262,7 +262,7 @@ void cautare_carte() {
 	int st=0, dr=n, m;
 	do {
 		m = (st+dr)/2;
-		if(strcmp(c[m], s)==0) {
+		if(strcmp(c[m].titlu, s)==0) {
 			afisare_carte(m);
 			return;
 		} else if(strcmp(s, c[m])<0)
