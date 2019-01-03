@@ -162,12 +162,13 @@ void sortare_az_clienti() {
                 p[i] = p[i+1];
                 p[i+1] = aux;
                 ok = 0;
-            } else if(strcmp(p[i].prenume, p[i+1].prenume)>0) {
-                aux = p[i];
-                p[i] = p[i+1];
-                p[i+1] = aux;
-                ok = 0;
-            }
+            } else if(strcmp(p[i].nume, p[i+1].nume)==0)
+                if(strcmp(p[i].prenume, p[i+1].prenume)>0) {
+                    aux = p[i];
+                    p[i] = p[i+1];
+                    p[i+1] = aux;
+                    ok = 0;
+                }
         }
     } while(!ok);
 }
@@ -188,7 +189,7 @@ void sortare_desc_clienti_carti() {
     } while(!ok);
 }
 
-void sortari() {
+void sortari_user() {
     int t;
     do {
         system("cls");
@@ -218,14 +219,36 @@ void sortari() {
 				afisare_carti();
             } getch(); break;
 
-            case 4: {
+            case 0: {
+                return;
+            }
+
+            default: {
+                return;
+            }
+        }
+    } while(t != 0);
+}
+
+void sortari_admin() {
+    int t;
+    do {
+        system("cls");
+        cout << "Introdu numarul optiunii dorite si apasa Enter!" << endl;
+        cout << "1. Sortare lista clienti alfabetic" << endl;
+        cout << "2. Sortare clienti descrescator in functie de numarul de carti imprumutate" << endl;
+        cout << "0. Inapoi" << endl;
+        cout << "Optiunea dorita: ";
+        cin >> t;
+        switch(t) {
+            case 1: {
                 sortare_az_clienti();
-				afisare_clienti();
+                afisare_clienti();
             } getch(); break;
 
-            case 5: {
+            case 2: {
                 sortare_desc_clienti_carti();
-				afisare_clienti();
+                afisare_clienti();
             } getch(); break;
 
             case 0: {
@@ -333,6 +356,41 @@ void cautari() {
 
             case 3: {
                 cautare_dupa_gen();
+            } getch(); break;
+
+            case 0: {
+                return;
+            }
+
+            default: {
+                return;
+            }
+        }
+    } while(t != 0);
+}
+
+void cautari_admin() {
+    int t;
+    do {
+        system("cls");
+        cout << "Introdu numarul optiunii dorite si apasa Enter!" << endl;
+        cout << "1. Cautare persoana" << endl;
+        cout << "2. Cautare persoana in functie de varsta" << endl;
+        cout << "3. Cautare persoana in functie de oras" << endl;
+        cout << "0. Inapoi" << endl;
+        cout << "Optiunea dorita: ";
+        cin >> t;
+        switch(t) {
+            case 1: {
+
+            } getch(); break;
+
+            case 2: {
+
+            } getch(); break;
+
+            case 3: {
+
             } getch(); break;
 
             case 0: {

@@ -7,10 +7,15 @@
 
 void citire();
 
-void afisari();
+void afisare_carti();
 
-void sortari();
+void afisare_clienti();
+
+void sortari_user();
+
+void sortari_admin();
 
 void cautari();
 
+void cautari_admin();
 #endif //LIBRARY_PROJECT_OPERATII_H
