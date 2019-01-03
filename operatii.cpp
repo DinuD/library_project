@@ -240,7 +240,7 @@ void sortari() {
 }
 
 void afisare_carte(int i) {
-	cout << "Cartea #" << i+1 << ":" << endl;
+    system("cls");
     cout << "Titlu: " << c[i].titlu << endl;
     cout << "Autor: " << c[i].autor << endl;
     cout << "Gen: " << c[i].gen << endl;
@@ -250,7 +250,6 @@ void afisare_carte(int i) {
     cout << "Carti imprumutate in acest moment: " << c[i].nr_eliberate_curent << endl;
     cout << c[i].nr_previous_chiriasi << " persoane au imprumutat aceasta carte in trecut" << endl;
     cout << endl;
-	getch();	
 }
 
 void cautare_carte() {
@@ -258,8 +257,9 @@ void cautare_carte() {
 	char s[51];
 	sortare_az_titlu();
 	cout << "Ce carte cauti?" << endl;
-	cin >> s;
-	int st=0, dr=n, m;
+    cin.get();
+	cin.get(s, 51);
+	int st=0, dr=n-1, m;
 	do {
 		m = (st+dr)/2;
 		if(strcmp(c[m].titlu, s)==0) {
