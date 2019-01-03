@@ -117,7 +117,6 @@ void sortare_az_titlu() {
             }
         }
     } while(!ok);
-    afisare_carti();
 }
 
 void sortare_az_autor() {
@@ -134,7 +133,6 @@ void sortare_az_autor() {
             }
         }
     } while(!ok);
-    afisare_carti();
 }
 
 void sortare_desc_stoc() {
@@ -151,7 +149,6 @@ void sortare_desc_stoc() {
             }
         }
     } while(!ok);
-    afisare_carti();
 }
 
 void sortare_az_clienti() {
@@ -173,7 +170,6 @@ void sortare_az_clienti() {
             }
         }
     } while(!ok);
-    afisare_clienti();
 }
 
 void sortare_desc_clienti_carti() {
@@ -190,7 +186,6 @@ void sortare_desc_clienti_carti() {
             }
         }
     } while(!ok);
-    afisare_clienti();
 }
 
 void sortari() {
@@ -210,22 +205,27 @@ void sortari() {
         switch(t) {
             case 1: {
                 sortare_az_titlu();
+				afisare_carti();
             } getch(); break;
 
             case 2: {
                 sortare_az_autor();
+				afisare_carti();
             } getch(); break;
 
             case 3: {
                 sortare_desc_stoc();
+				afisare_carti();
             } getch(); break;
 
             case 4: {
                 sortare_az_clienti();
+				afisare_clienti();
             } getch(); break;
 
             case 5: {
                 sortare_desc_clienti_carti();
+				afisare_clienti();
             } getch(); break;
 
             case 0: {
@@ -239,8 +239,76 @@ void sortari() {
     } while(t != 0);
 }
 
-void cautare_carte() {
+void afisare_carte(int i) {
+    cout << "Titlu: " << c[i].titlu << endl;
+    cout << "Autor: " << c[i].autor << endl;
+    cout << "Gen: " << c[i].gen << endl;
+    cout << "Numar pagini: " << c[i].nr_pag << endl;
+    cout << "Rating: " << c[i].rating << "/5" << endl;
+    cout << "In stoc: " << c[i].stoc << endl;
+    cout << "Carti imprumutate in acest moment: " << c[i].nr_eliberate_curent << endl;
+    cout << c[i].nr_previous_chiriasi << " persoane au imprumutat aceasta carte in trecut" << endl;
+    cout << endl;
+}
 
+void cautare_carte() {
+	system("cls");
+	char s[51];
+	sortare_az_titlu();
+	cout << "Ce carte cauti?" << endl;
+    cin.get();
+	cin.get(s, 51);
+	int st=0, dr=n-1, m;
+	do {
+		m = (st+dr)/2;
+		if(strcmp(c[m].titlu, s)==0) {
+			afisare_carte(m);
+			return;
+		} else if(strcmp(s, c[m].titlu)<0)
+			dr = m-1;
+		else
+			st = m+1;
+	} while(st<=dr);
+	cout << "Nu am gasit cartea. Incearca din nou" << endl;
+}
+
+void cautare_dupa_autor() {
+    system("cls");
+    char s[51];
+    int ok = 1;
+    cout << "Ce autor cauti?" << endl;
+    cin.get();
+    cin.get(s, 51);
+    sortare_az_autor();
+    for(int i = 0; i < n; i++) {
+        if(strcmp(s, c[i].autor)==0) {
+            if(ok)
+                cout << "Cartile lui " << c[i].autor << ":\n";
+            ok = 0;
+            afisare_carte(i);
+        }
+    }
+    if(ok)
+        cout << "Nu am gasit acest autor" << endl;
+}
+
+void cautare_dupa_gen() {
+    system("cls");
+    char s[21];
+    int ok = 1;
+    cout << "Ce gen cauti?" << endl;
+    cin.get();
+    cin.get(s, 21);
+    for(int i = 0; i < n; i++) {
+        if(strcmp(s, c[i].gen)==0) {
+            if(ok)
+                cout << "Cartile " << c[i].gen << ":\n";
+            ok = 0;
+            afisare_carte(i);
+        }
+    }
+    if(ok)
+        cout << "Nu am gasit acest gen";
 }
 
 void cautari() {
@@ -256,23 +324,15 @@ void cautari() {
         cin >> t;
         switch(t) {
             case 1: {
-                sortare_az_titlu();
+                cautare_carte();
             } getch(); break;
 
             case 2: {
-                sortare_az_autor();
+                cautare_dupa_autor();
             } getch(); break;
 
             case 3: {
-                sortare_desc_stoc();
-            } getch(); break;
-
-            case 4: {
-                sortare_az_clienti();
-            } getch(); break;
-
-            case 5: {
-                sortare_desc_clienti_carti();
+                cautare_dupa_gen();
             } getch(); break;
 
             case 0: {
