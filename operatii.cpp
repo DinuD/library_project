@@ -274,6 +274,7 @@ void sortari_admin() {
 }
 
 void afisare_carte(int i) {
+    cout << "Cod Carte: " << i+1 << endl;
     cout << "Titlu: " << c[i].titlu << endl;
     cout << "Autor: " << c[i].autor << endl;
     cout << "Gen: " << c[i].gen << endl;
@@ -442,4 +443,25 @@ void lista_sedii() {
         cout << "Orar: " << s[i].program.ora_deschidere << "-" << s[i].program.ora_inchidere;
         cout << endl;
     }
+}
+
+void imprumut() {
+    system("cls");
+    int cod;
+    cout << "Introdu codul cartii dorite:" << endl;
+    cin >> cod;
+    cod--;
+    c[cod].nr_eliberate_curent++;
+    c[cod].nr_previous_chiriasi++;
+    cout << "Ai imprumutat cartea " << c[cod].titlu << " de " << c[cod].autor << endl;
+}
+
+void returnare() {
+    system("cls");
+    int cod;
+    cout << "Introdu codul cartii pe care o returnezi:" << endl;
+    cin >> cod;
+    cod--;
+    c[cod].nr_eliberate_curent--;
+    cout << "Ai returnat cartea " << c[cod].titlu << " de " << c[cod].autor << endl;
 }

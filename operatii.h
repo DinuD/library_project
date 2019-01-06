@@ -22,4 +22,10 @@ void lista_sedii();
 void cautari();
 
 void cautari_admin();
+
+void imprumut();
+
+void returnare();
+
+
 #endif //LIBRARY_PROJECT_OPERATII_H

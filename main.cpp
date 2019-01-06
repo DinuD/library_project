@@ -15,9 +15,8 @@ void meniu_user() {
         cout << "3. Cautari" << endl;
         cout << "4. Lista sediilor deschise in acest moment" << endl;
         cout << "5. Lista completa a sediilor" << endl;
-        cout << "6. Lasa un review" << endl;
-        cout << "7. Imprumuta o carte" << endl;
-        cout << "8. Returneaza o carte" << endl;
+        cout << "6. Imprumuta o carte" << endl;
+        cout << "7. Returneaza o carte" << endl;
         cout << "0. Iesire" << endl;
         cout << "Optiunea dorita: ";
         cin >> t;
@@ -40,6 +39,14 @@ void meniu_user() {
 
             case 5: {
                 lista_sedii();
+            } getch(); break;
+
+            case 6: {
+                imprumut();
+            } getch(); break;
+
+            case 7: {
+                returnare();
             } getch(); break;
 
             case 0: {
