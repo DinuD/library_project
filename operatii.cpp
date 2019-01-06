@@ -13,10 +13,11 @@ using namespace std;
 
 ifstream carti("../carti.in");
 ifstream persoane("../persoane.in");
+ifstream sedii("../sedii.in");
 carte c[100];
 persoana p[32];
-sediu s[3];
-int n, nrp;
+sediu s[5];
+int n, nrp, nrs;
 
 void citire() {
     while(!carti.eof()) {
@@ -42,6 +43,15 @@ void citire() {
             persoane >> p[nrp].id_carti_imprumutate[j];
         persoane.get();
         nrp++;
+    }
+    while(!sedii.eof()) {
+        sedii.get(s[nrs].strada, 31);
+        sedii.get();
+        sedii.get(s[nrs].oras, 21);
+        sedii >> s[nrs].nr >> s[nrs].program.ora_deschidere;
+        sedii >> s[nrs].program.ora_inchidere;
+        sedii.get();
+        nrs++;
     }
 }
 
