@@ -15,6 +15,10 @@ void sortari_user();
 
 void sortari_admin();
 
+void lista_sedii_deschise();
+
+void lista_sedii();
+
 void cautari();
 
 void cautari_admin();

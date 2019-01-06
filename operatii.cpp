@@ -8,6 +8,7 @@
 #include <iostream>
 #include <conio.h>
 #include <afxres.h>
+#include <ctime>
 
 using namespace std;
 
@@ -412,4 +413,33 @@ void cautari_admin() {
             }
         }
     } while(t != 0);
+}
+
+void lista_sedii_deschise() {
+    system("cls");
+    cout << "Lista sedii deschise in acest moment:\n\n";
+    time_t now = time(0);
+    tm *ltm = localtime(&now);
+//    cout << ltm->tm_hour << ":" << ltm->tm_min;
+    for(int i = 0; i < nrs; i++) {
+        if(ltm->tm_hour >= s[i].program.ora_deschidere &&
+                ltm->tm_hour < s[i].program.ora_inchidere)
+        {
+            cout << s[i].strada << " " << s[i].nr << endl;
+            cout << s[i].oras << endl;
+            cout << "Orar: " << s[i].program.ora_deschidere << "-" << s[i].program.ora_inchidere;
+            cout << endl << endl;
+        }
+    }
+}
+
+void lista_sedii() {
+    system("cls");
+    for(int i = 0; i < nrs; i++) {
+        cout << i+1 << ".\n";
+        cout << s[i].strada << " " << s[i].nr << endl;
+        cout << s[i].oras << endl;
+        cout << "Orar: " << s[i].program.ora_deschidere << "-" << s[i].program.ora_inchidere;
+        cout << endl;
+    }
 }
