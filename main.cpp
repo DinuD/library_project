@@ -133,3 +133,5 @@ int main() {
     } while(t != 0);
     return 0;
 }
+
+// Dinu are multe subprograme
