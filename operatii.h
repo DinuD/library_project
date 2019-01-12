@@ -19,13 +19,19 @@ void lista_sedii_deschise();
 
 void lista_sedii();
 
-void cautari();
+void cautari_user();
 
 void cautari_admin();
 
 void imprumut();
 
 void returnare();
+
+void adaugare_carte();
+
+void stergere_carte();
+
+void actualizare_stoc();
 
 
 #endif //LIBRARY_PROJECT_OPERATII_H

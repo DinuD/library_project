@@ -30,7 +30,7 @@ void meniu_user() {
             } break;
 
             case 3: {
-                cautari();
+                cautari_user();
             } break;
 
             case 4: {
@@ -86,6 +86,18 @@ void meniu_admin() {
 
             case 3: {
                 cautari_admin();
+            } break;
+
+            case 4: {
+                adaugare_carte();
+            } break;
+
+            case 5: {
+                stergere_carte();
+            } break;
+
+            case 6: {
+                actualizare_stoc();
             } break;
 
             case 0: {
