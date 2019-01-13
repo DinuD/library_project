@@ -32,7 +32,6 @@ void citire() {
         carti.get();
         n++;
     }
-    n--;
     while(!persoane.eof()) {
         persoane.get(p[nrp].nume, 31);
         persoane.get();
@@ -162,6 +161,22 @@ void sortare_desc_stoc() {
     } while(!ok);
 }
 
+void sortare_desc_rating() {
+    int ok=1;
+    carte aux;
+    do {
+        ok = 1;
+        for(int i = 0; i < n-1; i++) {
+            if(c[i].rating < c[i+1].rating) {
+                aux = c[i];
+                c[i] = c[i+1];
+                c[i+1] = aux;
+                ok = 0;
+            }
+        }
+    } while(!ok);
+}
+
 void sortare_az_clienti() {
     int ok=1;
     persoana aux;
@@ -223,8 +238,6 @@ void sortari_user() {
         cout << "2. Sortare carti alfabetic dupa autor" << endl;
         cout << "3. Sortare carti descrescator dupa stoc" << endl;
         cout << "4. Sortare carti descrescator dupa rating" << endl;
-        cout << "5. Sortare lista clienti alfabetic" << endl;
-        cout << "6. Sortare clienti descrescator in functie de numarul de carti imprumutate" << endl;
         cout << "0. Inapoi" << endl;
         cout << "Optiunea dorita: ";
         cin >> t;
@@ -242,6 +255,11 @@ void sortari_user() {
             case 3: {
                 sortare_desc_stoc();
 				afisare_carti();
+            } getch(); break;
+
+            case 4: {
+                sortare_desc_rating();
+                afisare_carti();
             } getch(); break;
 
             case 0: {
@@ -379,7 +397,6 @@ void cautare_client(){
     char s[31],s1[31];
     sortare_az_clienti();
     cout<<"Nume persoana cautata: "<<endl;
-    cout<<"Prenume persoana cautata: "<<endl;
     cin.get();
     cin.get(s,31);
     cout<<"Prenume persoana cautata: "<<endl;
@@ -404,7 +421,7 @@ void cautare_client_oras(){
     system("cls");
     char s[21];
     sortare_az_clienti();
-    cout<<"Persoana cautata: "<<endl;
+    cout<<"Introdu orasul: "<<endl;
     cin.get();
     cin.get(s, 21);
     int i,nr=0;
@@ -469,7 +486,7 @@ void cautari_admin() {
             } getch(); break;
 
             case 2: {
-                cautare_client_oras()
+                cautare_client_oras();
             } getch(); break;
 
             case 0: {
@@ -556,43 +573,31 @@ void adaugare_carte(){
 
 void stergere_carte(){
     system("cls");
-    int i,ok=0;
+    int i, x;
     carte s;
-    cout<<"Date carte: "<<endl;
-    cout << "Titlu: ";
-    cin.get();
-    cin.get(s.titlu,51);
-    cout << "Autor: ";
-    cin.get();
-    cin.get(s.autor,51);
-    for(i=0;i<n;i++)
-        if(strcmp(c[i].titlu,s.titlu)==0)
-            if(strcmp(c[i].autor,s.autor)==0){
-                    c[i]=c[n];
-                    i=n;
-                    ok=1;
-            }
-    if(ok==0)
-        cout<<"Cartea pe care doriti sa o stergeti nu exista.";
+    cout<<"Introdu codul cartii dorite:"<<endl;
+    cin >> x;
+    if(x-1>n-1) {
+        cout << "Cartea pe care doriti sa o stergeti nu exista.";
+        return;
+    }
+    cout << "Ai sters cartea " << c[x-1].titlu << " de " << c[x-1].autor << endl;
+    for(i=x-1;i<n;i++) {
+        c[i] = c[i+1];
+    }
+    n--;
 }
 
 void actualizare_stoc(){
-     system("cls");
-     carte k;
-     float nr;
-     cout<<"Cartea ce necesita aclualizare: "<<endl;
-     cout<<"Titlu: ";
-     cin.get();
-     cin.get(k.titlu,51);
-     cout<<"Autor: ";
-     cin.get();
-     cin.get(k.autor,51);
-     cout<<"Numarul adaugat/scazut de exemplare: ";
-     cin>>nr;
-     for(int i=0;i<n;i++)
-         if(strcmp(k.titlu,c[i].titlu)==0)
-             if(strcmp(k.autor,c[i].autor)==0)
-                 if(nr>=0){
-                    c[i].stoc = c[i].stoc+nr;
-                } else c[i].stoc = c[i].stoc-nr;
+    system("cls");
+    carte k;
+    int x;
+    int nr;
+    cout<<"Codul cartii ce necesita aclualizare: "<<endl;
+    cin >> x;
+    x--;
+    cout << "Ai selectat cartea " << c[x].titlu << " de " << c[x].autor << endl;
+    cout<<"Numarul adaugat/scazut de exemplare: \n";
+    cin>>nr;
+    c[x].stoc = c[x].stoc+nr;
 }

@@ -94,11 +94,11 @@ void meniu_admin() {
 
             case 5: {
                 stergere_carte();
-            } break;
+            } getch(); break;
 
             case 6: {
                 actualizare_stoc();
-            } break;
+            } getch(); break;
 
             case 0: {
                 return;
