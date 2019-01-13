@@ -15,12 +15,22 @@ using namespace std;
 ifstream carti("../carti.in");
 ifstream persoane("../persoane.in");
 ifstream sedii("../sedii.in");
+ifstream intro("../intro.in");
 carte c[100];
 persoana p[32];
 sediu s[5];
 int n, nrp, nrs;
 
 void citire() {
+    char linie[51];
+    cout << "\n\n\n\n\n\n";
+    while(!intro.eof()) {
+        intro.get(linie, 51);
+        intro.get();
+        cout << "\t\t\t\t\t" << linie << endl;
+        Sleep(300);
+    }
+    Sleep(1000);
     while(!carti.eof()) {
         carti.get(c[n].titlu, 51);
         carti.get();
