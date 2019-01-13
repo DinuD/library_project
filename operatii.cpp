@@ -344,10 +344,10 @@ void cautare_carte() {
 	int st=0, dr=n-1, m;
 	do {
 		m = (st+dr)/2;
-		if(strcmp(c[m].titlu, s)==0) {
+		if(strcasecmp(c[m].titlu, s)==0) {
 			afisare_carte(m);
 			return;
-		} else if(strcmp(s, c[m].titlu)<0)
+		} else if(strcasecmp(s, c[m].titlu)<0)
 			dr = m-1;
 		else
 			st = m+1;
@@ -364,7 +364,7 @@ void cautare_dupa_autor() {
     cin.get(s, 51);
     sortare_az_autor();
     for(int i = 0; i < n; i++) {
-        if(strcmp(s, c[i].autor)==0) {
+        if(strcasecmp(s, c[i].autor)==0) {
             if(ok)
                 cout << "Cartile lui " << c[i].autor << ":\n";
             ok = 0;
@@ -383,7 +383,7 @@ void cautare_dupa_gen() {
     cin.get();
     cin.get(s, 21);
     for(int i = 0; i < n; i++) {
-        if(strcmp(s, c[i].gen)==0) {
+        if(strcasecmp(s, c[i].gen)==0) {
             if(ok)
                 cout << "Cartile " << c[i].gen << ":\n";
             ok = 0;
@@ -415,11 +415,11 @@ void cautare_client(){
     int st=0, dr=nrp-1, m;
     do{
         m = (st+dr)/2;
-        if(strcmp(p[m].nume, s)==0) {
-            if(strcmp(p[m].prenume, s1)==0)
+        if(strcasecmp(p[m].nume, s)==0) {
+            if(strcasecmp(p[m].prenume, s1)==0)
                 afisare_client(m);
                 return;
-        } else if(strcmp(s, p[m].nume)<0)
+        } else if(strcasecmp(s, p[m].nume)<0)
                 dr = m-1;
         else
             st = m+1;
@@ -436,7 +436,7 @@ void cautare_client_oras(){
     cin.get(s, 21);
     int i,nr=0;
     for(i=0;i<nrp;i++)
-        if(strcmp(p[i].oras,s)==0){
+        if(strcasecmp(p[i].oras,s)==0){
             afisare_client(i);
             nr=1;
         }
