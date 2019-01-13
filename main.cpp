@@ -30,7 +30,7 @@ void meniu_user() {
             } break;
 
             case 3: {
-                cautari();
+                cautari_user();
             } break;
 
             case 4: {
@@ -88,6 +88,18 @@ void meniu_admin() {
                 cautari_admin();
             } break;
 
+            case 4: {
+                adaugare_carte();
+            } break;
+
+            case 5: {
+                stergere_carte();
+            } getch(); break;
+
+            case 6: {
+                actualizare_stoc();
+            } getch(); break;
+
             case 0: {
                 return;
             }
@@ -133,5 +145,3 @@ int main() {
     } while(t != 0);
     return 0;
 }
-
-// Dinu are multe subprograme
