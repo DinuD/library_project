@@ -1,7 +1,3 @@
-//
-// Created by DinuD-PC on 12/5/2018.
-//
-
 #include "operatii.h"
 #include "structuri.h"
 #include <fstream>
